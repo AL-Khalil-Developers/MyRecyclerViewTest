@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +42,11 @@ public class poetryPageViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
+        //applying animation
+        ((poetryPP)holder).container.setAnimation(AnimationUtils.loadAnimation(contextP,R.anim.main_anim));
+
+
         ((poetryPP)holder).poetryLinesTxt.setText(poetryP.get(position));
         ((poetryPP)holder).copyBtn.setId(Integer.parseInt("1"));
         ((poetryPP)holder).shareBtn.setId(Integer.parseInt("2"));
@@ -58,9 +65,13 @@ public class poetryPageViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         private OnPoetryListClickListener mOnPoetryClickListener;
         TextView poetryLinesTxt;
         ImageButton shareBtn,copyBtn,whatsappBtn;
+        LinearLayout container;
+
         public poetryPP(@NonNull View itemView, final OnPoetryListClickListener mOnPoetryClickListener) {
             super(itemView);
             this.mOnPoetryClickListener = mOnPoetryClickListener;
+
+            container = itemView.findViewById(R.id.container_ID);
             poetryLinesTxt = itemView.findViewById(R.id.poetryLinesTxtID);
             shareBtn = itemView.findViewById(R.id.shareBtn);
             whatsappBtn = itemView.findViewById(R.id.whatsappBtn);
