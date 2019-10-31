@@ -51,24 +51,33 @@ public class poetryViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public  class poetryList extends RecyclerView.ViewHolder implements View.OnClickListener {
         OnPoetryClickListener onPoetryClickListener;
         TextView poetryListTitle;
-        public poetryList(@NonNull View itemView,OnPoetryClickListener onPoetryClickListener) {
+        public poetryList(@NonNull View itemView, final OnPoetryClickListener onPoetryClickListener) {
             super(itemView);
             poetryListTitle = itemView.findViewById(R.id.poetryListTitleText);
             this.onPoetryClickListener = onPoetryClickListener;
-
-            itemView.setOnClickListener(this);
+            poetryListTitle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onPoetryClickListener != null){
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            onPoetryClickListener.poetyCategoryClick(position);
+                        }
+                    }
+                }
+            });
 
         }
 
 
         @Override
         public void onClick(View v) {
-            onPoetryClickListener.onPoetryClick(getAdapterPosition());
+
 
         }
     }
     public interface OnPoetryClickListener{
-        void onPoetryClick(int position);
+         void poetyCategoryClick (int position);
     }
 
 }

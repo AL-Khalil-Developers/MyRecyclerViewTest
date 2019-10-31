@@ -6,8 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<Button
+    android:id="@+id/goToFavouriteBtn"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+    android:textColor="#000000"
+    android:background="#fff333"
+    android:text="Favourite Poetry"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
     <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@+id/goToFavouriteBtn"
         android:id="@+id/RecyclerViewID"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

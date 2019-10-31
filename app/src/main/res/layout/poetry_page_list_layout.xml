@@ -58,6 +58,14 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_whatsapp" />
 
+            <ImageButton
+                android:id="@+id/favtAddBtn"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@android:color/white"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_favorite" />
+
         </LinearLayout>
 
 
